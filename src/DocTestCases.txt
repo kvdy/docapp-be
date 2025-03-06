@@ -1,0 +1,111 @@
+Here are the `cURL` tests for the `DocumentController` endpoints:
+
+```sh
+# 1️⃣ Get all documents (Admin & Viewer)
+curl -X GET http://localhost:3000/documents \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzQxMTc5MDM2LCJleHAiOjE3NDEzOTUwMzZ9.UoUauE6oEcViNr10eRbmzUCMGXhNVdTEMtkdwrmwPCg"
+
+# 2️⃣ Get a document by ID (Admin & Viewer)
+curl -X GET http://localhost:3000/documents/1 \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+
+# 3️⃣ Create a new document (Admin & Editor)
+curl -X POST http://localhost:3000/documents \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "New Document",
+    "content": "This is a test document"
+}'
+
+# 4️⃣ Update a document (Admin & Editor, only if owner)
+curl -X PUT http://localhost:3000/documents/1 \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "Updated Document Title",
+    "content": "Updated document content"
+}'
+
+# 5️⃣ Delete a document (Admin only)
+curl -X DELETE http://localhost:3000/documents/1 \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+```
+
+### Notes:
+- Replace `YOUR_ACCESS_TOKEN` with a valid JWT token for authorization.
+- Replace `1` in the URLs with an actual document ID.
+- Ensure your backend is running at `http://localhost:3000/` (change if necessary).
+- The `POST` and `PUT` requests include JSON data that should match the `DocumentModel` structure.
+
+Would you like me to add tests with different roles and permission cases? 🚀
+
+
+
+
+
+Here are the corresponding `cURL` commands for interacting with the `DirectoryController`:
+
+---
+
+### 1️⃣ **Get All Directories** (Admin, Editor, Viewer)
+```sh
+curl -X GET "http://localhost:3000/directories" \
+     -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+```
+
+---
+
+### 2️⃣ **Get a Directory by ID** (Admin, Viewer)
+```sh
+curl -X GET "http://localhost:3000/directories/1" \
+     -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+```
+🔹 Replace `1` with the actual directory ID.
+
+---
+
+### 3️⃣ **Create a New Directory** (Admin, Editor)
+```sh
+curl -X POST "http://localhost:3000/directories" \
+     -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+     -H "Content-Type: application/json" \
+     -d '{
+           "name": "New Directory",
+           "path": "/uploads/newdir",
+           "owner": "user123"
+         }'
+```
+🔹 Adjust the payload fields (`name`, `path`, `owner`) based on your model.
+
+---
+
+### 4️⃣ **Update a Directory** (Admin, Editor)
+```sh
+curl -X PUT "http://localhost:3000/directories/1" \
+     -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+     -H "Content-Type: application/json" \
+     -d '{
+           "name": "Updated Directory",
+           "path": "/uploads/updateddir"
+         }'
+```
+🔹 Replace `1` with the actual directory ID and modify the `name` and `path` as needed.
+
+---
+
+### 5️⃣ **Delete a Directory** (Admin Only) 🚨 *(If enabled)*
+```sh
+curl -X DELETE "http://localhost:3000/directories/1" \
+     -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+```
+🔹 Replace `1` with the actual directory ID.
+
+---
+
+### Notes:
+- Replace `YOUR_ACCESS_TOKEN` with a valid JWT token for authentication.
+- Ensure the server is running on `localhost:3000` (adjust the base URL if necessary).
+- Update request bodies (`-d`) as per your schema.
+
+Let me know if you need any modifications! 🚀

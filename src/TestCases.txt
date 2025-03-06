@@ -1,0 +1,108 @@
+Here are the corresponding `cURL` commands for the APIs defined in the `UserController`:
+
+### 1. **Get User Profile**
+```sh
+curl -X GET http://localhost:3000/users/profile \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+```
+
+### 2. **Get User by ID**
+```sh
+curl -X GET http://localhost:3000/users/1 \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+```
+Replace `1` with the actual user ID.
+
+### 3. **Get All Users**
+```sh
+curl -X GET http://localhost:3000/users \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+```
+
+### 4. **Add a New User**
+```sh
+curl -X POST http://localhost:3000/users \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzQxMTU2NzYyLCJleHAiOjE3NDEzNzI3NjJ9.wSMlfE_vU1-QaW1tOgm_andzGF_YFuHji8VQDFa39cU" \
+  -H "Content-Type: application/json" \
+  -d '{
+        "name": "Rags Administrator 02",
+        "email": "rags-admin02@docapp.com",
+        "password": "p@ssw0rd10",
+        "grant": 0
+      }'
+```
+Modify the JSON payload according to your user model structure.
+
+### 5. **Update an Existing User**
+```sh
+curl -X PUT http://localhost:3000/users \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+        "email": "existinguser@example.com",
+        "password": "newpassword",
+        "role": "admin"
+      }'
+```
+Modify the JSON payload according to the user being updated.
+
+---
+
+Replace `YOUR_ACCESS_TOKEN` with a valid JWT token to authenticate the request. Let me know if you need further modifications! 🚀
+
+
+
+
+Here are the `cURL` commands for the **`/login`** and **`/register`** APIs defined in your `AuthController`.
+
+---
+
+## **1️⃣ Login API**
+🔹 **Endpoint:** `POST /auth/login`  
+🔹 **Request Body:** `{ email, password }`  
+🔹 **Response:** JWT token (if authentication is successful)
+
+### **cURL Command**
+```sh
+curl -X POST http://localhost:3000/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{
+        "email": "rags-admin01@docapp.com",
+        "password": "p@ssw0rd"
+      }'
+```
+RESPONSE - 
+{"id":3,"email":"rags-admin01@docapp.com","grant":0,"name":"Rags Administrator 01","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzQxMTU2NzYyLCJleHAiOjE3NDEzNzI3NjJ9.wSMlfE_vU1-QaW1tOgm_andzGF_YFuHji8VQDFa39cU"}%   
+---
+
+## **2️⃣ Register API**
+🔹 **Endpoint:** `POST /auth/register`  
+🔹 **Request Body:** `{ name, email, password, role }`  
+🔹 **Response:** JWT token (if registration is successful)
+
+### **cURL Command**
+```sh
+curl -X POST http://localhost:3000/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{
+        "name": "Rags Administrator 01",
+        "email": "rags-admin01@docapp.com",
+        "password": "p@ssw0rd",
+        "grant": 0
+      }'
+```
+
+RESPONSE 
+
+{"id":3,"email":"rags-admin01@docapp.com","grant":0,"name":"Rags Administrator 01","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzQxMTU2NjQ0LCJleHAiOjE3NDEzNzI2NDR9.mnPJeJtybV3IHZfcd57EBU4FidPP4h3omhvDsg1ZGBM"}% 
+
+Modify **`name`**, **`email`**, and **`password`** according to your requirements.
+
+---
+
+### **📌 Notes**
+- Ensure your **server is running** (`http://localhost:3000` is the assumed base URL).
+- **`/register`** checks if an email already exists before creating the user.
+- Both APIs return a **JWT token** (assuming `authService.authenticate()` returns a token).
+
+Let me know if you need modifications! 🚀
