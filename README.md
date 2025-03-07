@@ -1,87 +1,79 @@
-# NestJS boilerplate
+# DocApp Backend
 
-- nestJS
-- postgres
-- docker
-- JWT Auth
-- role guard
+## Setup Instructions
 
-Inspired by https://github.com/bashleigh/nestjs-blog
+Follow these steps to set up the project:
 
-## Use
+### 1. Clone the Repository
 
-- Start the postgres container using docker
+Open your terminal and run the following command to clone the repository:
 
-```bash
-$ docker-compose up -d
+```sh
+git clone https://github.com/kvdy/docapp-be.git
 ```
 
-- Start the nestjs process using to following
+### 2. Navigate to the Project Directory
 
-```bash
-$ yarn start
+Change to the project directory:
+
+```sh
+cd docapp-be
 ```
 
-### Production
+### 3. Install Dependencies
 
-If you're going to use this example in production (or your own verison of it) it's recommended to run using the 'complied' JS version from dist. You can do this by using the following command
+Install the required dependencies using npm or yarn:
 
-```bash
-$ yarn start:prod
+```sh
+npm install
+```
+or
+```sh
+yarn install
 ```
 
-> This command will also clean and build your dist folder
+### 4. Configure Environment Variables
 
-## Development
+Create a `.env` file in the root directory and add the necessary environment variables. Refer to `.env.example` for the required variables.
 
-For development, the best command to use is
+### 5. Run Database Migrations
 
-```bash
-$ yarn dev
+Run the database migrations to set up the database schema:
+
+```sh
+npm run migrate
+```
+or
+```sh
+yarn migrate
 ```
 
-This will start nodemon to reload our script when there's been any changes in the src directory
+### 6. Start the Development Server
 
-## Testing
+Start the development server:
 
-#### Unit testing
-
-Unit tests can be ran by simply using the `test` script
-
-```bash
-$ yarn test
+```sh
+npm run dev
+```
+or
+```sh
+yarn dev
 ```
 
-This will run jest on all `.spec.ts` files.
+The server should now be running at `http://localhost:3000`.
 
-#### End to End testing (E2E)
+### 7. Run Tests (Optional)
 
-End to end tests can be run by using the following command
+To run the tests, use the following command:
 
-```bash
-$ yarn test:e2e
+```sh
+npm test
+```
+or
+```sh
+yarn test
 ```
 
-this will run jest on all `.e2e-spec.ts` files.
+## Additional Information
 
-#### Coverage
-
-Use jest to show you a coverage of your tests
-
-```bash
-$ yarn test:cov
-```
-
-## Build your own NestJS application
-
-Want to get started on your own NestJS application? Simply install the [nest-cli](https://github.com/nestjs/nest-cli) `npm i -g @nestjs/cli` and use the command `nest new my-application` to create a new directory called `my-application` with nestjs ready to go!
-
-# Packages
-
-- Nestjs
-  - [@nestjs/typeorm](https://github.com/nestjs/typeorm) A typeorm module for nestjs
-  - [@nestjs/passport](https://github.com/nestjs/passport) An easy to use module for passport include AuthGuards
-  - [@nestjs/jwt](https://github.com/nestjs/jwt) A JWT module for nestjs
-- nestjs-community
-  - [nestjs-config](https://github.com/nestjs-community/nestjs-config) A config module for nestjs (envs)
-- [typeorm](https://github.com/typeorm/typeorm) typeorm is an orm for TypeScript
+For more details on the project structure and available scripts, refer to the documentation in the `docs` directory.

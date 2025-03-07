@@ -6,7 +6,7 @@ BEGIN
 	id, created, updated, name, email, password, "grant")
 	VALUES (gen_random_uuid(), NOW(), NOW(), "User Name", "user email", "user password", 0);
     END IF;
-END \$\$;
+END \$\$;   
 "
 
 
